@@ -1129,31 +1129,10 @@ function aur_install() {
     done
 }
 
-function only_pkg() {
-    configuration_install
-    sanitize_variables
-    check_variables
-    warning
-    init
-    facts
-    check_facts
-    prepare
-    install
-    kernels
-    configuration
-    network
-    if [ "$VIRTUALBOX" == "true" ]; then
-        virtualbox
-    fi
-    users
-    mkinitcpio
-    bootloader
-    if [ "$DESKTOP_ENVIRONMENT" != "" ]; then
-        desktop_environment
-    fi
+function main() {
     packages
     terminate
     end
 }
 
-only_pkg
+main
