@@ -5,7 +5,7 @@ echo "${bldred} # ${bldylw} Push updated repo to Github${txtrst}"
 echo
 sleep 2
 git add --all
-git commit -m "add packages"
+git commit -m "reconfigure"
 git push
 echo
 echo
