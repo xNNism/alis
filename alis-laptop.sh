@@ -1043,9 +1043,7 @@ function packages_aur() {
         arch-chroot /mnt chmod -R 755 /home/$USER_NAME/
         arch-chroot /mnt ln -s /usr/lib/libmarco-private.so /usr/lib/libmarco-private.so.1
         #aur_install "$PACKAGES_AUR"
-        arch-chroot /mnt bash -c echo "[x0C-r3po]
-                                      SigLevel = Optional TrustAll
-                                      Server = https://raw.githubusercontent.com/xNNism/x0c-r3po/master/" >> /etc/pacman.conf
+        arch-chroot /mnt curl https://raw.githubusercontent.com/xNNism/alis/xnn/pacman.conf -o /etc/pacman.conf
     fi
 }
 
