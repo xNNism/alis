@@ -17,9 +17,12 @@ nano alis-desktop.conf <- change passwords etc.!
 ```
 
 ToDo:
-- [ ] Custom repos
+- [ ] User directories (Downloads, Documents..)
+- [ ] ln -s /usr/lib/libmarco-private.so /usr/lib/libmarco-private.so.1
+- [ ] locale
+- [ ] Custom repo
 - [ ] Custom .bashrc
 - [ ] Hosts file
 - [ ] Openvpn configuration
-- [ ] Icons, themes, wallpapers
+- [ ] Icons, fonts, themes, wallpapers
 - [ ] Kernel parameters
