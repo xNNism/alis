@@ -17,6 +17,7 @@ nano alis-desktop.conf <- change passwords etc.!
 ```
 
 ToDo:
+- [ ] /etc/makepkg.conf
 - [ ] User directories (Downloads, Documents..)
 - [ ] ln -s /usr/lib/libmarco-private.so /usr/lib/libmarco-private.so.1
 - [ ] locale
