@@ -991,9 +991,6 @@ function desktop_environment_mate() {
     arch-chroot /mnt mkdir /home/$USER_NAME/Videos
     arch-chroot /mnt mkdir /home/$USER_NAME/Pictures
     arch-chroot /mnt mkdir /home/$USER_NAME/Public
-    arch-chroot /mnt chown -R xnn:users /home/$USER_NAME/
-    arch-chroot /mnt chmod -R 755 /home/$USER_NAME/
-    arch-chroot /mnt ln -s /usr/lib/libmarco-private.so /usr/lib/libmarco-private.so.1
 }
 
 function desktop_environment_cinnamon() {
@@ -1042,7 +1039,10 @@ function packages_aur() {
     fi
 
     if [ -n "$PACKAGES_AUR" ]; then
-        aur_install "$PACKAGES_AUR"
+        arch-chroot /mnt chown -R xnn:users /home/$USER_NAME/
+        arch-chroot /mnt chmod -R 755 /home/$USER_NAME/
+        arch-chroot /mnt ln -s /usr/lib/libmarco-private.so /usr/lib/libmarco-private.so.1
+        #aur_install "$PACKAGES_AUR"
         arch-chroot /mnt bash -c echo "[x0C-r3po]
                                       SigLevel = Optional TrustAll
                                       Server = https://raw.githubusercontent.com/xNNism/x0c-r3po/master/" >> /etc/pacman.conf
