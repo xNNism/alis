@@ -1043,7 +1043,7 @@ function packages_aur() {
     if [ -n "$PACKAGES_AUR" ]; then
         arch-chroot /mnt chown -R "$USER_NAME":users /home/"$USER_NAME"/
         arch-chroot /mnt chmod -R 755 /home/"$USER_NAME"/
-        arch-chroot /mnt ln -s "/usr/lib/libmarco-private.so" "/usr/lib/libmarco-private.so.1"
+        arch-chroot /mnt ln -s --force "/usr/lib/libmarco-private.so" "/usr/lib/libmarco-private.so.1"
         #aur_install "$PACKAGES_AUR"
         arch-chroot /mnt curl https://raw.githubusercontent.com/xNNism/alis/xnn/pacman.conf -o "/etc/pacman.conf"
     fi
