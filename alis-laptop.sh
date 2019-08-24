@@ -73,7 +73,7 @@ LIGHT_BLUE='\033[1;34m'
 NC='\033[0m'
 
 function configuration_install() {
-    source alis.conf
+    source alis-laptop.conf
     ADDITIONAL_USER_NAMES_ARRAY=($ADDITIONAL_USER_NAMES)
     ADDITIONAL_USER_PASSWORDS_ARRAY=($ADDITIONAL_USER_PASSWORDS)
 }
@@ -246,7 +246,7 @@ function facts() {
         DEVICE_SATA="true"
     elif [ -n "$(echo $DEVICE | grep "^/dev/nvme")" ]; then
         DEVICE_NVME="true"
-    elif [ -n "$(echo $DEVICE | grep "^/dev/mmcblk")" ]; then
+    elif [ -n "$(echo $DEVICE | grep "^/dev/mmc")" ]; then
         DEVICE_MMC="true"
     fi
 
@@ -348,7 +348,7 @@ function partition() {
             #PARTITION_BOOT_NUMBER=1
             DEVICE_ROOT="${DEVICE}p2"
         fi
-        
+
         if [ "$DEVICE_MMC" == "true" ]; then
             PARTITION_BOOT="${DEVICE}p1"
             PARTITION_ROOT="${DEVICE}p2"
@@ -379,12 +379,13 @@ function partition() {
             #PARTITION_BOOT_NUMBER=2
             DEVICE_ROOT="${DEVICE}p3"
         fi
-        
+
         if [ "$DEVICE_MMC" == "true" ]; then
-            PARTITION_BOOT="${DEVICE}p1"
-            PARTITION_ROOT="${DEVICE}p2"
-            #PARTITION_BOOT_NUMBER=1
-            DEVICE_ROOT="${DEVICE}p2"
+            PARTITION_BIOS="${DEVICE}p1"
+            PARTITION_BOOT="${DEVICE}p2"
+            PARTITION_ROOT="${DEVICE}p3"
+            #PARTITION_BOOT_NUMBER=2
+            DEVICE_ROOT="${DEVICE}p3"
         fi
 
         parted -s $DEVICE mklabel gpt mkpart primary fat32 1MiB 128MiB mkpart primary $FILE_SYSTEM_TYPE 128MiB 512MiB mkpart primary $FILE_SYSTEM_TYPE 512MiB 100% set 1 boot on
