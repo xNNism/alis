@@ -1033,7 +1033,7 @@ function packages_aur() {
                 ;;
         esac
         arch-chroot /mnt sed -i 's/%wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
-        arch-chroot /mnt chown -R xnn:users /home/$USER_NAME/
+        arch-chroot /mnt chown -R $USER_NAME:users /home/$USER_NAME/
         arch-chroot /mnt chmod -R 755 /home/$USER_NAME/
         arch-chroot /mnt ln -s /usr/lib/libmarco-private.so /usr/lib/libmarco-private.so.1
         #aur_install "$PACKAGES_AUR"
