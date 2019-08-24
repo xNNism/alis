@@ -17,11 +17,10 @@ nano alis-desktop.conf <- change passwords etc.!
 ```
 
 ToDo:
-- [ ] /etc/makepkg.conf
-- [ ] User directories (Downloads, Documents..)
-- [ ] ln -s /usr/lib/libmarco-private.so /usr/lib/libmarco-private.so.1
+- [x] User directories (Downloads, Documents..)
+- [x] ln -s /usr/lib/libmarco-private.so /usr/lib/libmarco-private.so.1
 - [ ] locale
-- [ ] Custom repo
+- [x] Custom repo
 - [ ] Custom .bashrc
 - [ ] Hosts file
 - [ ] Openvpn configuration

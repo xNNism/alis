@@ -986,6 +986,14 @@ function desktop_environment_xfce() {
 function desktop_environment_mate() {
     pacman_install "mate mate-extra lightdm lightdm-gtk-greeter"
     arch-chroot /mnt systemctl enable lightdm.service
+    arch-chroot /mnt mkdir /home/$USER_NAME/Downloads
+    arch-chroot /mnt mkdir /home/$USER_NAME/Documents
+    arch-chroot /mnt mkdir /home/$USER_NAME/Videos
+    arch-chroot /mnt mkdir /home/$USER_NAME/Pictures
+    arch-chroot /mnt mkdir /home/$USER_NAME/Public
+    arch-chroot /mnt chown -R xnn:users /home/$USER_NAME/
+    arch-chroot /mnt chmod -R 755 /home/$USER_NAME/
+    arch-chroot /mnt ln -s /usr/lib/libmarco-private.so /usr/lib/libmarco-private.so.1
 }
 
 function desktop_environment_cinnamon() {
@@ -1028,10 +1036,16 @@ function packages_aur() {
                 ;;
         esac
         arch-chroot /mnt sed -i 's/%wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+        arch-chroot /mnt bash -c "echo -e "[x0C-r3po]
+                                          SigLevel = Optional TrustAll
+                                          Server = https://raw.githubusercontent.com/xNNism/x0c-r3po/master/" >> /etc/pacman.conf"
     fi
 
     if [ -n "$PACKAGES_AUR" ]; then
         aur_install "$PACKAGES_AUR"
+        arch-chroot /mnt bash -c echo "[x0C-r3po]
+                                      SigLevel = Optional TrustAll
+                                      Server = https://raw.githubusercontent.com/xNNism/x0c-r3po/master/" >> /etc/pacman.conf
     fi
 }
 
